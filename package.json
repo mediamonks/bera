@@ -1,0 +1,30 @@
+{
+  "name": "bera",
+  "version": "0.1",
+  "description": "A simple utility function inspired by classnames to handle BEM naming",
+  "main": "index.js",
+  "author": "nswaldman <nswaldman@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mediamonks/bera.git"
+  },
+  "scripts": {
+    "test": "tape tests/*.js"
+  },
+  "keywords": [
+    "abem",
+    "bem",
+    "bera",
+    "react",
+    "css",
+    "classes",
+    "classname",
+    "classnames",
+    "util",
+    "utility"
+  ],
+  "devDependencies": {
+    "tape": "^4.9.1"
+  }
+}
