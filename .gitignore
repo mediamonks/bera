@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+.project
+.settings
+.vs
+.vscode
+.yarn-integrity
+package-lock.json
+tests/*.js
+!tests/test.js

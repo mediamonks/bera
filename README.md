@@ -8,7 +8,7 @@ A simple JavaScript utility for generating classnames following the ABEM princip
 import bem from "bera";
 
 bem("button", "label", ["visible", "active"]);
-// => 'button__label button__label--visible button__label--active'
+// => 'button__label -visible -active'
 ```
 
 The library can also be used directly on the page just including the `index.js` in a standalone `<script>` tag; or by RequireJS.

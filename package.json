@@ -4,10 +4,14 @@
   "description": "A simple utility function inspired by classnames to handle BEM naming",
   "main": "index.js",
   "author": "nswaldman <nswaldman@gmail.com>",
+  "homepage": "https://www.mediamonks.com/",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/mediamonks/bera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mediamonks/bera/issues"
   },
   "scripts": {
     "test": "tape tests/*.js"
