@@ -132,7 +132,7 @@ bem("button__label", {
   'has-focus': true
 });
 // with `has-focus`: true
-// => button__label .-hasFocus
+// => button__label -hasFocus
 
 // with "text-red": red
 bem("button__label", ["ColorRed"]);
