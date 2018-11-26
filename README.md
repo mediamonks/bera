@@ -164,7 +164,7 @@ So that even in those edge cases the ABEM naming convention is kept.
 
 ### The `join` function
 
-`bera` comes with an utility function that helps to concatenate several `truthy` values in one string. That's useful when the generated _BEM_ classname needs to
+`bera` comes with an utility function that helps to concatenate several `truthy` values in one string. That's useful when the generated _ABEM_ classname needs to
 be concatenate by external strings, such a `className` passed by props in React. See below for a real-world example.
 
 ### Usage with React Component.
