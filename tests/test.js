@@ -1,13 +1,13 @@
 const test = require("tape");
-const bem = require("../");
+const abem = require("../");
 
-test("bem() returns itself", assert => {
-  assert.equal(bem(), bem, "calling bem without arguments returns itself");
+test("abem() returns itself", assert => {
+  assert.equal(abem(), abem, "calling abem without arguments returns itself");
   assert.end();
 });
 
-test("bem(block, elem, Object) full signature call", assert => {
-  const classname = bem("block", "elem", {
+test("abem(block, elem, Object) full signature call", assert => {
+  const classname = abem("block", "elem", {
     fooBar: true,
     baz: 1,
     qux: undefined
@@ -16,67 +16,67 @@ test("bem(block, elem, Object) full signature call", assert => {
   assert.equal(
     classname,
     "block__elem -fooBar -baz",
-    "calling bem with full signature returns the expected string"
+    "calling abem with full signature returns the expected string"
   );
 
   assert.end();
 });
 
-test("bem(block, elem, Array) full signature call", assert => {
-  const classname = bem("block", "elem", ["fooBar", "baz", undefined]);
+test("abem(block, elem, Array) full signature call", assert => {
+  const classname = abem("block", "elem", ["fooBar", "baz", undefined]);
 
   assert.equal(
     classname,
     "block__elem -fooBar -baz",
-    "calling bem with full signature returns the expected string"
+    "calling abem with full signature returns the expected string"
   );
 
   assert.end();
 });
 
-test("bem(block, Object) returns the expected classname", assert => {
+test("abem(block, Object) returns the expected classname", assert => {
   assert.equal(
-    bem("block", { foo: true, bar: false, bazQux: 1 }),
+    abem("block", { foo: true, bar: false, bazQux: 1 }),
     "block -foo -bazQux"
   );
 
   assert.end();
 });
 
-test("bem(block, Array) returns the expected classname", assert => {
+test("abem(block, Array) returns the expected classname", assert => {
   assert.equal(
-    bem("block", ["foo", undefined, "bazQux"]),
+    abem("block", ["foo", undefined, "bazQux"]),
   "block -foo -bazQux"
   );
 
   assert.end();
 });
 
-test("bem(block, Object) returns kebab case modifiers", assert => {
+test("abem(block, Object) returns kebab case modifiers", assert => {
   assert.equal(
-    bem("block", { FooBar: true, ["BAZ-Qux"]: true, DOMContentLoaded: true }),
+    abem("block", { FooBar: true, ["BAZ-Qux"]: true, DOMContentLoaded: true }),
     "block -fooBar -BAZQux -DOMContentLoaded"
   );
 
   assert.end();
 });
 
-test("bem(block, Array) returns kebab case modifiers", assert => {
+test("abem(block, Array) returns kebab case modifiers", assert => {
   assert.equal(
-    bem("block", ["FooBar", "BAZ-Qux", "DOMContentLoaded"]),
+    abem("block", ["FooBar", "BAZ-Qux", "DOMContentLoaded"]),
     "block -fooBar -BAZQux -DOMContentLoaded"
   );
 
   assert.end();
 });
 
-test("bem(block) only block given", assert => {
-  const block = bem("block");
+test("abem(block) only block given", assert => {
+  const block = abem("block");
 
   assert.equal(
     typeof block,
     "function",
-    "calling bem with just the block given, returns a function"
+    "calling abem with just the block given, returns a function"
   );
 
   assert.equal(
@@ -88,16 +88,16 @@ test("bem(block) only block given", assert => {
   assert.end();
 });
 
-test("bem(block)(elem) returns the expected classname", assert => {
-  const block = bem("block");
+test("abem(block)(elem) returns the expected classname", assert => {
+  const block = abem("block");
 
   assert.equal(block("elem"), "block__elem");
 
   assert.end();
 });
 
-test("bem(block)(Object) returns the expected classname", assert => {
-  const block = bem("block");
+test("abem(block)(Object) returns the expected classname", assert => {
+  const block = abem("block");
 
   assert.equal(
     block({ foo: true, bar: false, bazQux: 1 }),
@@ -107,8 +107,8 @@ test("bem(block)(Object) returns the expected classname", assert => {
   assert.end();
 });
 
-test("bem(block)(Array) returns the expected classname", assert => {
-  const block = bem("block");
+test("abem(block)(Array) returns the expected classname", assert => {
+  const block = abem("block");
 
   assert.equal(
     block(["foo", undefined, "bazQux"]),
@@ -118,8 +118,8 @@ test("bem(block)(Array) returns the expected classname", assert => {
   assert.end();
 });
 
-test("bem(block)(elem, Object) returns the expected classname", assert => {
-  const block = bem("block");
+test("abem(block)(elem, Object) returns the expected classname", assert => {
+  const block = abem("block");
 
   assert.equal(
     block("elem", { foo: true, bazQux: true, bar: 1 }),
@@ -129,8 +129,8 @@ test("bem(block)(elem, Object) returns the expected classname", assert => {
   assert.end();
 });
 
-test("bem(block)(elem, Array) returns the expected classname", assert => {
-  const block = bem("block");
+test("abem(block)(elem, Array) returns the expected classname", assert => {
+  const block = abem("block");
 
   assert.equal(
     block("elem", ["foo", undefined, "bazQux", "bar"]),
@@ -140,13 +140,13 @@ test("bem(block)(elem, Array) returns the expected classname", assert => {
   assert.end();
 });
 
-test("bem(block + elem) returns an element function", assert => {
-  const elem = bem("block__elem");
+test("abem(block + elem) returns an element function", assert => {
+  const elem = abem("block__elem");
 
   assert.equal(
     typeof elem,
     "function",
-    "calling bem with element as first arg returns a function"
+    "calling abem with element as first arg returns a function"
   );
 
   assert.equal(
@@ -158,16 +158,16 @@ test("bem(block + elem) returns an element function", assert => {
   assert.end();
 });
 
-test.skip("bem(block + elem) can't be called with an additional identifier", assert => {
-  const elem = bem("block__elem");
+test.skip("abem(block + elem) can't be called with an additional identifier", assert => {
+  const elem = abem("block__elem");
 
   assert.throws(() => elem("what"));
 
   assert.end();
 });
 
-test("bem(block + elem, Object) returns the expected classname", assert => {
-  const elem = bem("block__elem");
+test("abem(block + elem, Object) returns the expected classname", assert => {
+  const elem = abem("block__elem");
 
   assert.equal(
     elem({ foo: true, bazQux: true, bar: 1 }),
@@ -177,13 +177,13 @@ test("bem(block + elem, Object) returns the expected classname", assert => {
   assert.end();
 });
 
-test("bem(block, elem) returns an element function", assert => {
-  const elem = bem("block", "elem");
+test("abem(block, elem) returns an element function", assert => {
+  const elem = abem("block", "elem");
 
   assert.equal(
     typeof elem,
     "function",
-    "calling bem with element as first arg returns a function"
+    "calling abem with element as first arg returns a function"
   );
 
   assert.equal(
@@ -195,16 +195,16 @@ test("bem(block, elem) returns an element function", assert => {
   assert.end();
 });
 
-test.skip("bem(block, elem) can't be called with an additional identifier", assert => {
-  const elem = bem("block", "elem");
+test.skip("abem(block, elem) can't be called with an additional identifier", assert => {
+  const elem = abem("block", "elem");
 
   assert.throws(() => elem("what"));
 
   assert.end();
 });
 
-test("bem(block, elem, Object) returns the expected classname", assert => {
-  const elem = bem("block", "elem");
+test("abem(block, elem, Object) returns the expected classname", assert => {
+  const elem = abem("block", "elem");
 
   assert.equal(
     elem({ foo: true, bazQux: true, bar: 1 }),
@@ -216,16 +216,16 @@ test("bem(block, elem, Object) returns the expected classname", assert => {
 
 test("hyphens on kebab case modifiers", assert => {
   assert.equal(
-    bem("block", ["----Foo-------Bar", "BAZ--Qux", "-DOM-Content-Loaded"]),
+    abem("block", ["----Foo-------Bar", "BAZ--Qux", "-DOM-Content-Loaded"]),
     "block -fooBar -BAZQux -DOMContentLoaded"
   );
 
   assert.end();
 });
 
-test("bem.join(...args)", assert => {
+test("abem.join(...args)", assert => {
   assert.equal(
-    bem.join("foo", false, "bar", undefined, "", "baz"),
+    abem.join("foo", false, "bar", undefined, "", "baz"),
     "foo bar baz"
   );
 

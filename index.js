@@ -59,11 +59,11 @@
     return classes.join(" ");
   }
 
-  function bem(block, elem, mods) {
+  function abem(block, elem, mods) {
     var length = arguments.length;
 
     if (length === 0) {
-      return bem;
+      return abem;
     }
 
     if (length === 3) {
@@ -85,20 +85,20 @@
     }
   }
 
-  bem.join = function join() {
+  abem.join = function join() {
     return toArray(arguments)
       .filter(Boolean)
       .join(" ");
   };
 
   if (typeof module !== "undefined" && module.exports) {
-    bem.default = module.exports = bem;
+    abem.default = module.exports = abem;
   } else if (typeof define === "function" && isObject(define.amd)) {
-    // register as 'bem', consistent with npm package name
-    define("bem", [], function() {
-      return bem;
+    // register as 'abem', consistent with npm package name
+    define("abem", [], function() {
+      return abem;
     });
   } else {
-    window.bem = bem;
+    window.abem = abem;
   }
 })();

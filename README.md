@@ -5,9 +5,9 @@ A simple JavaScript utility for generating classnames following the ABEM princip
 ## Usage:
 
 ```js
-import bem from "bera";
+import abem from "bera";
 
-bem("button", "label", ["visible", "active"]);
+abem("button", "label", ["visible", "active"]);
 // => 'button__label -visible -active'
 ```
 
@@ -25,12 +25,12 @@ In line with Matteo's inspiration for naming bero, it's a character from _Yōkai
 
 ## Usage
 
-The `bem` function is a curried function, takes up to three arguments.
+The `abem` function is a curried function, takes up to three arguments.
 
 The simplest usage is the basic signature with two arguments, `identifier` and `modifiers`:
 
 ```js
-bem(identifier: String, modifiers: Array|Object) : String
+abem(identifier: String, modifiers: Array|Object) : String
 ```
 
 ### `identifier: String`
@@ -40,14 +40,14 @@ The `identifier` can be either a `block`, or an `element`.
 If an `element` is specified, the full identifier has to be written, in the form of `block__elem`. For example:
 
 ```js
-bem("button__label", ["visible", "active"]);
+abem("button__label", ["visible", "active"]);
 // => 'button__label  -visible -active'
 ```
 
-Since `bem` is a curried function, it also possible write the code above as:
+Since `abem` is a curried function, it also possible write the code above as:
 
 ```js
-const label = bem("button__label");
+const label = abem("button__label");
 
 label(["visible", "active"]);
 // => 'button__label -visible -active'
@@ -56,20 +56,20 @@ label(["visible", "active"]);
 This form would be rarely used for elements; it's more common having _block functions_, when the signature with three arguments is used:
 
 ```js
-bem(block: String, elem: String, modifiers: Array|Object) : String
+abem(block: String, elem: String, modifiers: Array|Object) : String
 ```
 
 In this form, the equivalent of the code above would be:
 
 ```js
-bem("button", "label", ["visible", "active"]);
+abem("button", "label", ["visible", "active"]);
 // => 'button__label -visible -active'
 ```
 
 But it would be more common used as curried function for _block functions_:
 
 ```js
-const button = bem("button");
+const button = abem("button");
 
 button("label", ["visible", "active"]);
 // => 'button__label -visible -active'
@@ -86,14 +86,14 @@ If it's an `Array`, every element that is considered _truthy_, would be
 added as modifier in the resulting classname:
 
 ```js
-bem("button__label", [false, "visible", 0, , "", undefined, "active"]);
+abem("button__label", [false, "visible", 0, , "", undefined, "active"]);
 // =>  button__label -visible -active'
 ```
 
 However, `modifiers` really shines when an `Object` is given:
 
 ```js
-bem("button__label", {
+abem("button__label", {
   visible: isVisible,
   active: isActive
 });
@@ -113,7 +113,7 @@ bem("button__label", {
 With [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) you can also have modifiers as such:
 
 ```js
-bem("button__label", {
+abem("button__label", {
   [`text-${color}`]: !!color
 });
 // with `color`: undefined:
@@ -128,35 +128,35 @@ bem("button__label", {
 All modifiers are automatically converted to camel case:
 
 ```js
-bem("button__label", {
+abem("button__label", {
   'has-focus': true
 });
 // with `has-focus`: true
 // => button__label -hasFocus
 
 // with "text-red": red
-bem("button__label", ["ColorRed"]);
+abem("button__label", ["ColorRed"]);
 // => button__label -colorRed
 ```
 
 Likely cases of abbreviation will be retained:
 
 ```js
-bem("button__label", ["DOMLoaded"]);
+abem("button__label", ["DOMLoaded"]);
 // => button__label -DOMLoaded
 ```
 
 Any number of hyphens at the beginning of the string will be removed:
 
 ```js
-bem("button__label", ["-foo", "--bar", "---baz"]);
+abem("button__label", ["-foo", "--bar", "---baz"]);
 // => button__label -foo -bar -baz
 ```
 
 And any numbers of hyphen inside the string will be removed and the first letter of the suffix properly cased:
 
 ```js
-bem("button__label", ["foo----bar"]);
+abem("button__label", ["foo----bar"]);
 // => button__label -fooBar
 ```
 
@@ -170,9 +170,9 @@ be concatenate by external strings, such a `className` passed by props in React.
 ### Usage with React Component.
 
 ```js
-import bem, { join } from "bero";
+import abem, { join } from "bero";
 
-const button = bem("button");
+const button = abem("button");
 
 export default class Button {
   // ...
