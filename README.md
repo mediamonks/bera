@@ -1,5 +1,7 @@
 # Bera
 
+[![Build Status](https://travis-ci.org/mediamonks/bera.svg?branch=master)](https://travis-ci.org/mediamonks/bera)
+
 A simple JavaScript utility for generating classnames following the ABEM principles.
 
 ## Usage:
